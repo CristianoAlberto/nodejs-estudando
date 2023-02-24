@@ -1,7 +1,5 @@
 require('dotenv').config({ path: '.env' });
 const express = require('express');
-//const sequelize= require('sequelize');
-//const mysql = require ('mysql');
 
 const routes = require('./routes');
 
