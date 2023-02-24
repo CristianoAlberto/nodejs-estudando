@@ -1,6 +1,5 @@
-const db = require('../models/db');
 const Animal = require("../models/animalModel");
-const sequelize = require('../models/db');
+
 
 
 module.exports = {

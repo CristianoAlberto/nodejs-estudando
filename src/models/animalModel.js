@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
-//const sequelize = new Sequelize('splite::memory:');
+
 const Animal = db.define('animal', {
     id: {
         type: Sequelize.INTEGER,
