@@ -1,7 +1,7 @@
 const db = require('../models/db');
 const Animal = require("../models/animalModel");
 const sequelize = require('../models/db');
-const { or } = require('sequelize');
+
 
 module.exports = {
 

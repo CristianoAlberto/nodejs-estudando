@@ -1,9 +1,6 @@
 const AnimalService = require('../services/AnimalService');
 
 
-const sequelize = require("../models/db");
-//const { json } = require('express/lib/response');
-
 module.exports = {
 
     buscarTodos: async(req, res) => { res.json(await AnimalService.buscarTodos()); },
