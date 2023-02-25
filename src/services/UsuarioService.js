@@ -13,14 +13,23 @@ module.exports = {
     },
 
     filtro: async(info) => {
-        const data = await Usuario.findAll({
-            where: {
-                nome: {
-                    [Op.like]: `${info}%`
+        try {
+            const data = await Usuario.findAll({
+                where: {
+                    nome: {
+                        [Op.like]: `${info}%`
+                    }
                 }
+            })
+            if (data == '') {
+                return { message: "Não existe este usuario" }
+            } else {
+                return data
             }
-        })
-        return data
+
+        } catch (error) {
+            throw error
+        }
     }
 
 }
