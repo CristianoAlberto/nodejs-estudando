@@ -35,6 +35,20 @@ module.exports = {
         } catch (error) {
             throw error
         }
+    },
+
+    inserirUsuario: async(nome, email, palavraPasse, telefone) => {
+        try {
+            if (nome && email && palavraPasse && telefone) {
+                const data = await Usuario.create({ nome, email, palavraPasse, telefone })
+                Usuario.sync();
+                return data
+            }
+            return { message: "erro no cadastramento" }
+        } catch (error) {
+            throw error
+        }
+
     }
 
 }
