@@ -1,4 +1,6 @@
 const Animal = require("../models/animalModel");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 
 
@@ -56,15 +58,26 @@ module.exports = {
         }
     },
 
-    buscarPorNome: async(nome) => {
+    buscarPorNomeRaca: async(info) => {
         try {
-            const data = await Animal.findOne({ where: { nome: nome } })
-            Animal.sync()
-            if (data === null) {
-                return { message: "Não existe esse registo" }
-            } else {
-                return data
-            }
+            const data = await Animal.findAll({
+                where: {
+                    nome: {
+                        [Op.like]: `%${info}%`
+                    }
+                }
+            })
+
+            if (data.length) return data
+            const data2 = await Animal.findAll({
+                where: {
+                    nome: {
+                        [Op.like]: `%${info}%`
+                    }
+                }
+            })
+            if (data2.length) return data2
+            return { message: "Não existe este animal" }
         } catch (error) {
             throw error
         }

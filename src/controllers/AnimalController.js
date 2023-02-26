@@ -15,7 +15,7 @@ module.exports = {
 
     deletar: async(req, res) => { res.json(await AnimalService.deletar(req.params.id)); },
 
-    buscarPorNome: async(req, res) => { res.json(await AnimalService.buscarPorNome(req.params.nome)) },
+    buscarPorNomeRaca: async(req, res) => { res.json(await AnimalService.buscarPorNomeRaca(req.params.info)) },
 
     actualizar: async(req, res) => {
         let { nome, raca, cor, foto } = req.body;

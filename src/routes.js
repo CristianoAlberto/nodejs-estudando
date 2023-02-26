@@ -8,7 +8,7 @@ router.get('/animais', AnimalController.buscarTodos);
 router.get('/animais/:id', AnimalController.buscarUm);
 router.post('/animal', AnimalController.inserir);
 router.delete('/animalDelete/:id', AnimalController.deletar);
-router.get('/animalFiltro/:nome', AnimalController.buscarPorNome);
+router.get('/animalFiltro/:info', AnimalController.buscarPorNomeRaca);
 router.put('/animalActualizar/:id', AnimalController.actualizar);
 
 router.get('/usuarios', UsuarioController.buscarTodos);
