@@ -12,6 +12,6 @@ router.get('/animal/:nome', AnimalController.buscarPorNome);
 router.put('/animal/:id', AnimalController.actualizar);
 
 router.get('/usuarios', UsuarioController.buscarTodos);
-router.get('/usuario/:info', UsuarioController.filtro);
+router.get('/usuario/:info', UsuarioController.filtroUsuarioNome);
 
 module.exports = router;

@@ -12,7 +12,8 @@ module.exports = {
                 return data;
     },
 
-    filtro: async(info) => {
+    //implementar para pegar email tambem se der numero
+    filtroUsuarioNome: async(info) => {
         try {
             const data = await Usuario.findAll({
                 where: {
@@ -22,7 +23,19 @@ module.exports = {
                 }
             })
             if (data == '') {
-                return { message: "Não existe este usuario" }
+                const data2 = await Usuario.findAll({
+                    where: {
+                        email: {
+                            [Op.like]: `${info}%`
+                        }
+                    }
+                })
+                if (data2 == '') {
+                    return { message: "Não existe este usuario" }
+                } else {
+                    return data2
+                }
+
             } else {
                 return data
             }
