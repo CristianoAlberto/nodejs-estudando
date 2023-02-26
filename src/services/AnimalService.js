@@ -74,7 +74,7 @@ module.exports = {
     actualizar: async(id, nome, raca, cor, foto) => {
         try {
             const validar = await Animal.findByPk(id)
-            if (validar != null) {
+            if (!validar.length) {
                 const data = await Animal.update({ nome: nome, raca: raca, cor: cor, foto: foto }, { where: { id: id } });
                 Animal.sync();
                 return { message: "Actualizado com sucesso" }

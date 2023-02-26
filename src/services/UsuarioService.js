@@ -15,11 +15,21 @@ module.exports = {
 
     filtroUsuarioNomeEmail: async(info) => {
         try {
-            const data = await Usuario.findAll({ where: { nome: {
-                        [Op.like]: `%${info}%` } } })
+            const data = await Usuario.findAll({
+                where: {
+                    nome: {
+                        [Op.like]: `%${info}%`
+                    }
+                }
+            })
             if (data.length) return data
-            const data2 = await Usuario.findAll({ where: { email: {
-                        [Op.like]: `%${info}%` } } })
+            const data2 = await Usuario.findAll({
+                where: {
+                    email: {
+                        [Op.like]: `%${info}%`
+                    }
+                }
+            })
             if (data.length) return data2
             return { message: "Não existe este usuario" }
         } catch (error) {
