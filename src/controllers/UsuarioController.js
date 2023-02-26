@@ -3,5 +3,5 @@ const UsuarioService = require('../services/UsuarioService');
 module.exports = {
     buscarTodos: async(req, res) => { res.json(await UsuarioService.buscarTodos()) },
 
-    filtroUsuarioNome: async(req, res) => { res.json(await UsuarioService.filtroUsuarioNome(req.params.info)) }
+    filtroUsuarioNomeEmail: async(req, res) => { res.json(await UsuarioService.filtroUsuarioNomeEmail(req.params.info)) }
 }
