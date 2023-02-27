@@ -6,7 +6,7 @@ module.exports = {
 
     buscarTodos: async() => {
         const data = await Usuario.findAll();
-        Usuario.sync();
+
         if (data)
             if (data == '') { return { message: "Não existe nenhum usuário registado" } } else
                 return data;
@@ -37,6 +37,15 @@ module.exports = {
         }
     },
 
+    buscarPorId: async(id) => {
+        try {
+            const data = await Usuario.findByPk(id)
+            if (data) return data
+            return { message: "Não existe este usuario" }
+        } catch (error) {
+            throw error
+        }
+    },
     inserirUsuario: async(nome, email, palavraPasse, telefone) => {
         try {
             if (nome && email && palavraPasse && telefone) {
@@ -45,6 +54,38 @@ module.exports = {
                 return data
             }
             return { message: "erro no cadastramento" }
+        } catch (error) {
+            throw error
+        }
+
+    },
+
+    actualizarUsuario: async(id, nome, email, palavraPasse, telefone) => {
+
+        try {
+            const validar = await Usuario.findByPk(id)
+            if (validar) {
+                const data = await Usuario.update({ nome: nome, email: email, palavraPasse: palavraPasse, telefone: telefone }, { where: { id: id } })
+                Usuario.sync()
+                return { message: "Actualizado com sucesso" }
+            } else {
+                return { message: "Usuario não existe" }
+            }
+        } catch (error) {
+            throw error
+        }
+    },
+
+    deletarUsuario: async(id) => {
+        try {
+            const validar = await Usuario.findByPk(id)
+            if (validar) {
+                const data = await Usuario.destroy({ where: { id: id } })
+                Usuario.sync()
+                return { message: "excluido com sucesso" }
+            }
+            return { message: "usuario não existe" }
+
         } catch (error) {
             throw error
         }

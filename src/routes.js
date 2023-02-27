@@ -16,7 +16,7 @@ router.get('/usuarioFiltro/:info', UsuarioController.filtroUsuarioNomeEmail);
 router.get('/usuarioId/:id', UsuarioController.buscarPorId);
 router.post('/usuarioInserir', UsuarioController.inserirUsuario);
 router.put('/usuarioActualizar/:id', UsuarioController.actualizarUsuario);
-router.delete('/usuaroDelete/:id', UsuarioController.deletarUsuario);
+router.delete('/usuarioDelete/:id', UsuarioController.deletarUsuario);
 
 
 module.exports = router;
